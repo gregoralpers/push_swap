@@ -24,8 +24,6 @@ void	rra(t_stack **a)
 		revrotate(a);
 		write(1, "rra\n", 4);
 	}
-	if (SHOW)
-		print_stack(*a, "rra");
 }
 
 void	rrb(t_stack **b)
@@ -35,8 +33,6 @@ void	rrb(t_stack **b)
 		revrotate(b);
 		write(1, "rrb\n", 4);
 	}
-	if (SHOW)
-		print_stack(*b, "rrb");
 }
 
 void	rrr(t_stack **a, t_stack **b)
@@ -44,6 +40,4 @@ void	rrr(t_stack **a, t_stack **b)
 	revrotate(a);
 	revrotate(b);
 	write(1, "rrr\n", 4);
-	if (SHOW)
-		print_both_stacks(*a, *b);
 }
