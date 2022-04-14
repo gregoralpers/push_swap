@@ -1,11 +1,11 @@
-#include "push_swap.h"
+#include "includes/push_swap.h"
 
 static void	rotate(t_stack **stack)
 {
 	t_stack	*temp;
 	t_stack	*first;
 
-	if (*stack && ft_lstsize(*stack) > 1)
+	if (*stack && stack_size(*stack) > 1)
 	{
 		first = *stack;
 		temp = first;

@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "includes/push_swap.h"
 
 static void	swap(t_stack **stack)
 {
@@ -16,7 +16,7 @@ static void	swap(t_stack **stack)
 
 void	sa(t_stack **a)
 {
-	if (ft_lstsize(*a) > 1)
+	if (stack_size(*a) > 1)
 	{
 		swap(a);
 		write(1, "sa\n", 3);
@@ -25,7 +25,7 @@ void	sa(t_stack **a)
 
 void	sb(t_stack **b)
 {
-	if (ft_lstsize(*b) > 1)
+	if (stack_size(*b) > 1)
 	{
 		swap(b);
 		write(1, "sb\n", 3);
@@ -34,9 +34,9 @@ void	sb(t_stack **b)
 
 void	ss(t_stack **a, t_stack **b)
 {
-	if (ft_lstsize(*a) > 1)
+	if (stack_size(*a) > 1)
 		swap(a);
-	if (ft_lstsize(*b) > 1)
+	if (stack_size(*b) > 1)
 		swap(b);
 	write(1, "ss\n", 3);
 }

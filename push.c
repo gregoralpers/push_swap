@@ -1,19 +1,19 @@
-#include "push_swap.h"
+#include "includes/push_swap.h"
 
 void	pa(t_stack **a, t_stack **b)
 {
-	if (ft_lstsize(*b) > 0)
+	if (stack_size(*b) > 0)
 	{
-		push(a, ft_lstnew(pullnumber(b)));
+		push(a, stack_new(pullnumber(b)));
 		write(1, "pa\n", 3);
 	}
 }
 
 void	pb(t_stack **a, t_stack **b)
 {
-	if (ft_lstsize(*a) > 0)
+	if (stack_size(*a) > 0)
 	{
-		push(b, ft_lstnew(pullnumber(a)));
+		push(b, stack_new(pullnumber(a)));
 		write(1, "pb\n", 3);
 	}
 }
@@ -22,19 +22,19 @@ void	push(t_stack **s, t_stack *new)
 {
 	if (s == NULL)
 		return ;
-	ft_lstadd_front(s, new);
+	stack_add_front(s, new);
 }
 
-int	*pullnumber(t_stack **s)
+int	pullnumber(t_stack **s)
 {
-	int		*content;
-	t_stack	*pulledlist;
+	int	content;
+	t_stack		*pulledlist;
 
 	if (*s == NULL || s == NULL)
-		return (NULL);
+		return (0);
 	pulledlist = *s;
 	*s = pulledlist->next;
 	content = pulledlist->content;
-	ft_lstdelone(pulledlist, NULL);
+	stack_delone(pulledlist, NULL);
 	return (content);
 }
