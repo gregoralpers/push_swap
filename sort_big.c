@@ -6,7 +6,7 @@
 /*   By: galpers <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:58:44 by galpers           #+#    #+#             */
-/*   Updated: 2022/04/14 10:41:32 by galpers          ###   ########.fr       */
+/*   Updated: 2022/04/14 18:17:36 by galpers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,14 @@ void	place_best_top(t_stack **a, t_stack **b, t_stack *elem)
 	}
 }
 
-static void	insert_sorted_b(t_stack **a, t_stack **b, int mean)
+void	insert_sorted_b(t_stack **a, t_stack **b)
 {
 	t_stack	*min_b;
 
 	min_b = get_min(*b);
 	pb(a, b);
-	if (stack_size(*b) > 1)
-	{
-		if (((*b)->content < (min_b->content)))
+	if (stack_size(*b) > 1 && (*b)->content < (min_b->content))
 			rb(b);
-		else if ((*b)->content < mean)
-			rb(b);
-	}
 }
 
 void	sort_mean_to_b(t_stack **a, t_stack **b, int len, int abs_mean)
@@ -83,7 +78,7 @@ void	sort_mean_to_b(t_stack **a, t_stack **b, int len, int abs_mean)
 	if (len > 3)
 	{
 		if (((*a)->content) <= mean)
-			insert_sorted_b(a, b, abs_mean);
+			insert_sorted_b(a, b);
 		else
 			ra(a);
 		sort_mean_to_b(a, b, stack_size(*a), abs_mean);

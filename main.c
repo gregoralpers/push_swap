@@ -15,25 +15,23 @@ static void	sort(int ac, char **av)
 			sort_small(&a, &b);
 		else
 		{
-			sort_mean_to_b(&a, &b, stack_size(a), get_mean(a));
-			while (stack_size(b))
+			sort_pos_to_b(&a, &b, stack_size(a), get_pos(a, 50));
+			while (!(is_sorted(b))&& stack_size(b))
 			{
 				place_best_top(&a, &b, get_cheapest_elem(&a, &b));
 				pa(&a, &b);
 			}
 			while (!(is_sorted(a)))
 				sort_small(&a, &b);
-        }
         stack_clear(&a, NULL);
 		stack_clear(&b, NULL);
+		}
 	}
 }
 
 int	main(int ac, char **av)
 {
 	if (ac > 1)
-	{
 		sort(ac, av);
-	}
 	return (0);
 }
