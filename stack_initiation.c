@@ -6,23 +6,11 @@
 /*   By: galpers <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 12:28:35 by galpers           #+#    #+#             */
-/*   Updated: 2022/04/14 09:56:31 by galpers          ###   ########.fr       */
+/*   Updated: 2022/04/21 09:04:52 by galpers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
-
-t_stack	*ft_newstack(int num)
-{
-	t_stack	*elem;
-
-	elem = (t_stack *)malloc(sizeof(t_stack));
-	if (elem == NULL)
-		return (NULL);
-	elem->content = num;
-	elem->next = NULL;
-	return (elem);
-}
 
 t_stack	*init_stack_split(char **list)
 {
@@ -38,13 +26,13 @@ t_stack	*init_stack_split(char **list)
 			return (NULL);
 		if (i == 0)
 		{
-			first = ft_newstack(ft_atoi(list[i]));
+			first = stack_new(ft_atoi(list[i]));
 			first->next = temp;
 			temp = first;
 		}
 		else
 		{
-			temp->next = ft_newstack(ft_atoi(list[i]));
+			temp->next = stack_new(ft_atoi(list[i]));
 			temp = temp->next;
 		}
 		i++;
@@ -70,13 +58,13 @@ t_stack	*initialize_stack(int ac, char **av)
 				return (0);
 			if (i == 1)
 			{
-				first = ft_newstack(ft_atoi(av[i]));
+				first = stack_new(ft_atoi(av[i]));
 				first->next = temp;
 				temp = first;
 			}
 			else
 			{
-				temp->next = ft_newstack(ft_atoi(av[i]));
+				temp->next = stack_new(ft_atoi(av[i]));
 				temp = temp->next;
 			}
 		}

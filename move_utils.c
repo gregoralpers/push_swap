@@ -6,7 +6,7 @@
 /*   By: galpers <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 22:02:22 by galpers           #+#    #+#             */
-/*   Updated: 2022/04/12 14:32:56 by galpers          ###   ########.fr       */
+/*   Updated: 2022/04/16 10:03:24 by galpers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,18 @@ t_stack	*element_after_me(t_stack **stack, t_stack *elem)
 {
 	t_stack	*temp;
 
-	if ((uintptr_t)(*stack)->content > (uintptr_t)elem->content
-		&& ((uintptr_t)stack_last(*stack)->content) < (uintptr_t)elem->content)
+	if ((*stack)->content > elem->content
+		&& (stack_last(*stack)->content) < elem->content)
 		return (*stack);
-	if ((uintptr_t)get_min(*stack)->content > (uintptr_t)elem->content)
+	if (get_min(*stack)->content > elem->content)
 		return (get_min(*stack));
-	else if ((uintptr_t)get_max(*stack)->content < (uintptr_t)elem->content)
+	else if (get_max(*stack)->content < (elem->content))
 		return (get_max(*stack));
 	temp = *stack;
 	while (temp->next)
 	{
-		if (((uintptr_t)temp->content < (uintptr_t)elem->content)
-			&& ((uintptr_t)temp->next->content > (uintptr_t)elem->content))
+		if (temp->content < (elem->content)
+			&& (temp->next->content > elem->content))
 			break ;
 		temp = temp->next;
 	}

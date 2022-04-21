@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_three.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: galpers <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/21 09:11:45 by galpers           #+#    #+#             */
+/*   Updated: 2022/04/21 09:11:49 by galpers          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "includes/push_swap.h"
 
 void	sort_three(t_stack **stack)
@@ -49,26 +61,4 @@ void	sort_small(t_stack **a, t_stack **b)
 		pa(a, b);
 	if (!is_sorted(*a))
 		sort_small(a, b);
-}
-
-void	sort_b(t_stack **a, t_stack **b)
-{
-	if (stack_size(*b) == 3)
-	{
-		sort_three(b);
-	}
-	while (stack_size(*b) > 3)
-	{
-		if ((stack_size(get_min(*b)) < ((stack_size(*b) + 1) / 2)))
-			min_top(b, rrb);
-		else
-			min_top(b, rb);
-		if (is_sorted(*b))
-			break ;
-		if (((*b)->content) > ((*b)->next->content))
-		{
-			sa(b);
-			continue ;
-		}
-	}
 }

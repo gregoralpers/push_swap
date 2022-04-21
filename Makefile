@@ -1,11 +1,10 @@
-SHOW	= 0
 SRCS	= ${wildcard *.c}
 NAME	= push_swap
 CC	= gcc
-FLAGS	= -Wall -Werror -Wextra -fsanitize=address -D SHOW=${SHOW}
+FLAGS	= -Wall -Werror -Wextra -fsanitize=address -g
 RM	= rm -f
-INCS	= libft/includes
-LIBFT	= -Llibft -lft
+INCS	= includes
+LIBFT	= libft/libft.a 
 CHECK	= ./tests/checker_OS
 
 ${NAME}: runlibft
@@ -25,13 +24,9 @@ fclean: clean
 re: fclean all
 
 runlibft:
-	make -C libft
-
-run_checker:
-	ARG=${GEN}; ./push_swap $$ARG | ${CHECK} $$ARG 
+	@cd libft && make all
 
 norm:
 	norminette -R CheckForbiddenSourceHeader ${SRCS}
-	norminette -R CheckDefine ${INCS}
 
 .PHONY: all re clean fclean
