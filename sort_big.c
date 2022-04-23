@@ -6,11 +6,11 @@
 /*   By: galpers <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:58:44 by galpers           #+#    #+#             */
-/*   Updated: 2022/04/16 09:58:20 by galpers          ###   ########.fr       */
+/*   Updated: 2022/04/21 09:40:18 by galpers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "includes/push_swap.h"
 
 int	shared_move(t_stack **a, t_stack **b, t_stack *elem, t_stack *after_me)
 {

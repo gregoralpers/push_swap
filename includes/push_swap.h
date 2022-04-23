@@ -37,8 +37,8 @@ int		toprr_cost(t_stack *stack, t_stack *elem);
 t_stack	*element_after_me(t_stack **stack, t_stack *elem);
 t_stack	*get_cheapest_elem(t_stack **a, t_stack **b);
 t_stack	*get_pos(t_stack *a, int pos);
-void	sort_pos_to_b(t_stack **a, t_stack **b, t_stack *target, int len, int num);
-void	insert_sorted_b(t_stack **a, t_stack **b);
+void	sort_pos_to_b(t_stack **a, t_stack **b, t_stack *median);
+void	insert_sorted_b(t_stack **a, t_stack **b, t_stack *median);
 
 int		check_repeats(t_stack *stack);
 int		check_errors(char *str);

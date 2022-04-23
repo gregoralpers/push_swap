@@ -6,11 +6,11 @@
 /*   By: galpers <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 13:11:44 by galpers           #+#    #+#             */
-/*   Updated: 2022/04/12 14:51:54 by galpers          ###   ########.fr       */
+/*   Updated: 2022/04/21 09:39:58 by galpers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "includes/push_swap.h"
 
 int	stack_size(t_stack *lst)
 {

@@ -6,12 +6,12 @@
 /*   By: galpers <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 22:02:22 by galpers           #+#    #+#             */
-/*   Updated: 2022/04/16 10:03:24 by galpers          ###   ########.fr       */
+/*   Updated: 2022/04/21 09:40:32 by galpers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "push_swap.h"
+#include "includes/push_swap.h"
 
 int	topr_cost(t_stack *stack, t_stack *elem)
 {

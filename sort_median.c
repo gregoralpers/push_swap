@@ -6,11 +6,11 @@
 /*   By: galpers <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 17:16:22 by galpers           #+#    #+#             */
-/*   Updated: 2022/04/21 09:12:22 by galpers          ###   ########.fr       */
+/*   Updated: 2022/04/23 07:56:22 by galpers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "includes/push_swap.h"
 
 t_stack	*get_pos(t_stack *a, int pos)
 {
@@ -42,7 +42,7 @@ t_stack	*get_pos(t_stack *a, int pos)
 	return (result);
 }
 
-void	insert_sorted_b(t_stack **a, t_stack **b)
+void	insert_sorted_b(t_stack **a, t_stack **b, t_stack *median)
 {
 	t_stack	*min_b;
 
@@ -50,13 +50,13 @@ void	insert_sorted_b(t_stack **a, t_stack **b)
 	pb(a, b);
 	if (stack_size(*b) > 1 && (*b)->content < (min_b->content))
 	{
-		if((stack_last(*a)->content) < (*a)->content)
+		if((((*a)->content) > (median)->content))
 			rr(a, b);
 		else
 			rb(b);
 	}
 }
-
+/*
 static int find_element_top_down(t_stack **a, t_stack *target)
 {
 	t_stack *temp;
@@ -85,19 +85,19 @@ static int	find_element_bottom_up(t_stack **a, t_stack *pos)
 		temp = temp->next;
 	}	
 	return (stack_size(result));	
-}
+}*/
 
-void	sort_pos_to_b(t_stack **a, t_stack **b, t_stack *target, int len, int num)
+void	sort_pos_to_b(t_stack **a, t_stack **b, t_stack *median)
 {
-	if (len > num)
+	t_stack *target;
+
+	if (stack_size(*a) > 3)
 	{	
+		target = get_pos(*a, stack_size(*a) / 2);
 		if (((*a)->content) <= ((target)->content))
-			insert_sorted_b(a, b);
-		else 	
-			if (find_element_top_down(a, target) < find_element_bottom_up(a, target))
-					ra(a);
-			else
-					rra(a);
-		sort_pos_to_b(a, b, target, stack_size(*a), num);
+			insert_sorted_b(a, b, median);
+	else
+				ra(a);
+		sort_pos_to_b(a, b, median);
 	}
 } 
