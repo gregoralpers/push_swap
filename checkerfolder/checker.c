@@ -6,23 +6,11 @@
 /*   By: galpers <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 09:37:46 by galpers           #+#    #+#             */
-/*   Updated: 2022/04/21 09:47:27 by galpers          ###   ########.fr       */
+/*   Updated: 2022/04/28 14:46:09 by galpers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-static void	error_reply(void)
-{
-	char	*error;
-
-	error = get_next_line(2);
-	if (error && !ft_strncmp("Error\n", error, 5))
-		ft_putstr_fd("Error\n", 2);
-	else
-		ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd("Error\n", 2);
-}
 
 static void	make_action(t_stack **a, t_stack **b, char *str)
 {
@@ -49,7 +37,7 @@ static void	make_action(t_stack **a, t_stack **b, char *str)
 	else if (!ft_strncmp(str, "rrr\n", ft_strlen(str)))
 		rrr(a, b);
 	else
-		ft_printf("Error\n");
+		ft_putendl_fd("Error", 2);
 }
 
 static void	read_actions(t_stack **a, t_stack **b)
@@ -63,10 +51,10 @@ static void	read_actions(t_stack **a, t_stack **b)
 			break ;
 		make_action(a, b, line);
 	}
-	if (is_sorted(*a) && !ft_lstsize(*b))
-		ft_printf("OK\n");
+	if (is_sorted(*a) && !stack_size(*b))
+		ft_putendl_fd("OK", 1);
 	else
-		ft_printf("KO\n");
+		ft_putendl_fd("KO", 1);
 }
 
 int	main(int ac, char **av)
@@ -79,13 +67,10 @@ int	main(int ac, char **av)
 	if (ac > 1)
 	{
 		a = initialize_stack(ac, av);
-		a = initialize_stack(ac, av);
-		if (!a || !check_repeats(a))
-			error_reply();
-		else
+		if (a && check_repeats(a))
 			read_actions(&a, &b);
 	}
-	ft_lstclear(&a, NULL);
-	ft_lstclear(&b, NULL);
+	stack_clear(&a, NULL);
+	stack_clear(&b, NULL);
 	return (0);
 }

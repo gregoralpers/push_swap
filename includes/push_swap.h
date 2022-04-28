@@ -2,6 +2,8 @@
 # define PUSH_SWAP_H
 #include <unistd.h>
 #include ".././libft/libft.h"
+#include ".././libft/get_next_line.h"
+
 
 typedef struct s_stack
 {
