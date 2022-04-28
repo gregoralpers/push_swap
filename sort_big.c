@@ -6,7 +6,7 @@
 /*   By: galpers <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:58:44 by galpers           #+#    #+#             */
-/*   Updated: 2022/04/21 09:40:18 by galpers          ###   ########.fr       */
+/*   Updated: 2022/04/27 14:16:19 by galpers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,3 +59,31 @@ void	place_best_top(t_stack **a, t_stack **b, t_stack *elem)
 			rb(b);
 	}
 }
+
+static void	insert_sorted_b_big(t_stack **a, t_stack **b, t_stack *target)
+{
+	t_stack	*min_b;
+
+	min_b = get_min(*b);
+	pb(a, b);
+	if (stack_size(*b) > 1 && (*b)->content < (min_b->content))
+	{
+		if ((*a)->content > (target)->content)
+			rr(a, b);
+		else
+			rb(b);
+	}
+}
+
+void	sort_pos_to_b_big(t_stack **a, t_stack **b, t_stack *target, int num)
+{
+
+	while (stack_size(*a) > num && stack_size(*a) > 3)
+	{	
+		if (((*a)->content) <= ((target)->content))
+			insert_sorted_b_big(a, b, target);
+		else
+			ra(a);
+		sort_pos_to_b_big(a, b, target, num);
+	}
+} 

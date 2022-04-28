@@ -6,7 +6,7 @@
 /*   By: galpers <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 17:16:22 by galpers           #+#    #+#             */
-/*   Updated: 2022/04/23 07:56:22 by galpers          ###   ########.fr       */
+/*   Updated: 2022/04/27 14:37:00 by galpers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_stack	*get_pos(t_stack *a, int pos)
 	return (result);
 }
 
-void	insert_sorted_b(t_stack **a, t_stack **b, t_stack *median)
+void	insert_sorted_b(t_stack **a, t_stack **b, int i)
 {
 	t_stack	*min_b;
 
@@ -50,54 +50,46 @@ void	insert_sorted_b(t_stack **a, t_stack **b, t_stack *median)
 	pb(a, b);
 	if (stack_size(*b) > 1 && (*b)->content < (min_b->content))
 	{
-		if((((*a)->content) > (median)->content))
+		if ((i == 0) && (((*a)->content > get_pos(*a, stack_size(*a) / 2)->content) || ((*a) == get_min(*a))))
+			rr(a, b);
+		else if ((i == 1) && ((*a)->content > stack_last(*a)->content))
 			rr(a, b);
 		else
 			rb(b);
 	}
 }
-/*
-static int find_element_top_down(t_stack **a, t_stack *target)
-{
-	t_stack *temp;
 
-	temp = *a;
-	while ((temp)->next != NULL)
-	{
-		if((temp)->content < (target)->content)
-			return (stack_size(*a) - stack_size(temp));	
-		temp = temp->next;
-	}	
-	return (stack_size(*a) - stack_size(temp));	
-}
-
-static int	find_element_bottom_up(t_stack **a, t_stack *pos)
-{
-	t_stack *temp;
-	t_stack *result;
-
-	temp = *a;
-	result = *a;
-	while (temp != NULL)
-	{
-		if((temp)->content < ((pos)->content))
-			result = temp;
-		temp = temp->next;
-	}	
-	return (stack_size(result));	
-}*/
-
-void	sort_pos_to_b(t_stack **a, t_stack **b, t_stack *median)
+void	sort_pos_to_b(t_stack **a, t_stack **b, int i)
 {
 	t_stack *target;
 
-	if (stack_size(*a) > 3)
+	target = get_pos(*a, stack_size(*a) / 2);
+	if (stack_size(*a) > 3 && !(is_sorted(*a)))
 	{	
-		target = get_pos(*a, stack_size(*a) / 2);
-		if (((*a)->content) <= ((target)->content))
-			insert_sorted_b(a, b, median);
-	else
+		if ((*a) == get_min(*a))
+		{
+			i = 1;
+			ra(a);
+		}
+		else if ((i == 1) && ((*a)->next != NULL))
+		{
+			if ((*a)->next->content > stack_last(*a)->content && (*a)->next->content < (*a)->content)
+			{	
+				if ((stack_size(*b) > 1) && ((*b)->content < (*b)->next->content))
+					ss(a, b);
+				else
+					sa(a);
+			}
+			else if((*a)->content > stack_last(*a)->content)
 				ra(a);
-		sort_pos_to_b(a, b, median);
+			else 
+				insert_sorted_b(a, b, i);
+			sort_pos_to_b(a, b, i);
+		}
+		else if (((*a)->content) <= ((target)->content))
+			insert_sorted_b(a, b, i);
+		else
+			ra(a);
+		sort_pos_to_b(a, b, i);
 	}
 } 
