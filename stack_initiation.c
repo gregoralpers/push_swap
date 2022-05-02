@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_initiation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: galpers <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: galpers <galpers@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 12:28:35 by galpers           #+#    #+#             */
-/*   Updated: 2022/04/21 09:04:52 by galpers          ###   ########.fr       */
+/*   Updated: 2022/05/02 12:27:33 by galpers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,34 @@ t_stack	*init_stack_split(char **list)
 	return (first);
 }
 
+static t_stack	*stack_population(int ac, char **av, int i)
+{
+	t_stack	*temp;
+	t_stack	*first;
+
+	while (++i < ac)
+	{
+		if (check_errors(av[i]))
+			return (0);
+		if (i == 1)
+		{
+			first = stack_new(ft_atoi(av[i]));
+			first->next = temp;
+			temp = first;
+		}
+		else
+		{
+			temp->next = stack_new(ft_atoi(av[i]));
+			temp = temp->next;
+		}
+	}
+	temp->next = NULL;
+	return (first);
+}
+
 t_stack	*initialize_stack(int ac, char **av)
 {
 	int		i;
-	t_stack	*temp;
 	t_stack	*first;
 
 	i = 0;
@@ -52,23 +76,19 @@ t_stack	*initialize_stack(int ac, char **av)
 		return (init_stack_split(ft_split(av[1], ' ')));
 	else
 	{
-		while (++i < ac)
-		{
-			if (check_errors(av[i]))
-				return (0);
-			if (i == 1)
-			{
-				first = stack_new(ft_atoi(av[i]));
-				first->next = temp;
-				temp = first;
-			}
-			else
-			{
-				temp->next = stack_new(ft_atoi(av[i]));
-				temp = temp->next;
-			}
-		}
-		temp->next = NULL;
+		first = stack_population (ac, av, i);
 		return (first);
 	}
+}
+
+t_stack	*stack_new(int content)
+{
+	t_stack	*new;
+
+	new = (t_stack *)malloc(sizeof(t_stack));
+	if (!new)
+		return (0);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }

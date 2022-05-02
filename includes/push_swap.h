@@ -1,15 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: galpers <galpers@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/02 11:23:10 by galpers           #+#    #+#             */
+/*   Updated: 2022/05/02 11:24:30 by galpers          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-#include <unistd.h>
-#include ".././libft/libft.h"
-#include ".././libft/get_next_line.h"
-
+# include <unistd.h>
+# include ".././libft/libft.h"
+# include ".././libft/get_next_line.h"
 
 typedef struct s_stack
 {
-		int	content;
-		int lis;
-		struct s_stack *next;
+	int				content;
+	struct s_stack	*next;
 }	t_stack;
 
 int		is_sorted(t_stack *stack);

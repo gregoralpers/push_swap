@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: galpers <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: galpers <galpers@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 13:11:44 by galpers           #+#    #+#             */
-/*   Updated: 2022/04/21 09:39:58 by galpers          ###   ########.fr       */
+/*   Updated: 2022/05/02 11:50:47 by galpers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,6 @@ void	stack_delone(t_stack *lst, int (del)(int))
 		(del)(lst->content);
 		free(lst);
 	}
-}
-
-t_stack	*stack_new(int content)
-{
-	t_stack	*new;
-
-	new = (t_stack *)malloc(sizeof(t_stack));
-	if (!new)
-		return (0);
-	new->content = content;
-	new->next = NULL;
-	return (new);
 }
 
 void	stack_add_front(t_stack **lst, t_stack *new)

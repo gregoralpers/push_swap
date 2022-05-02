@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_big.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: galpers <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: galpers <galpers@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:58:44 by galpers           #+#    #+#             */
-/*   Updated: 2022/04/27 14:16:19 by galpers          ###   ########.fr       */
+/*   Updated: 2022/05/02 11:44:42 by galpers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ static void	insert_sorted_b_big(t_stack **a, t_stack **b, t_stack *target)
 
 void	sort_pos_to_b_big(t_stack **a, t_stack **b, t_stack *target, int num)
 {
-
 	while (stack_size(*a) > num && stack_size(*a) > 3)
 	{	
 		if (((*a)->content) <= ((target)->content))
@@ -86,4 +85,4 @@ void	sort_pos_to_b_big(t_stack **a, t_stack **b, t_stack *target, int num)
 			ra(a);
 		sort_pos_to_b_big(a, b, target, num);
 	}
-} 
+}

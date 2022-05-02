@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: galpers <galpers@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/02 11:36:48 by galpers           #+#    #+#             */
+/*   Updated: 2022/05/02 11:45:30 by galpers          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "includes/push_swap.h"
 
 void	pa(t_stack **a, t_stack **b)
@@ -27,8 +39,8 @@ void	push(t_stack **s, t_stack *new)
 
 int	pullnumber(t_stack **s)
 {
-	int	content;
-	t_stack		*pulledlist;
+	int		content;
+	t_stack	*pulledlist;
 
 	if (*s == NULL || s == NULL)
 		return (0);
