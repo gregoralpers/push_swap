@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_initiation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: galpers <galpers@student.42.fr>            +#+  +:+       +#+        */
+/*   By: galpers <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 12:28:35 by galpers           #+#    #+#             */
-/*   Updated: 2022/05/02 12:27:33 by galpers          ###   ########.fr       */
+/*   Updated: 2022/05/02 22:37:58 by galpers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ t_stack	*init_stack_split(char **list)
 		}
 		i++;
 	}
-	temp->next = NULL;
+	if (first != NULL)
+		temp->next = NULL;
 	return (first);
 }
 
